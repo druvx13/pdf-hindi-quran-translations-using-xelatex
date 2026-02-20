@@ -2,11 +2,14 @@
 # -*- coding: utf-8 -*-
 """Regenerate /docs HTML pages for the Qur'an website.
 
+Run from the repository root:
+    python3 src/gendocshtml.py
+
 Sources used:
-  - trans/en.transliteration.txt  : sura|ayah|transliteration (with HTML tags)
-  - quran_hindi_farooq.txt        : [sura:ayah] Hindi translation (Farooq Khan)
-  - en.pickthall.txt              : one English line per ayah (Pickthall)
-  - quran_arabic.txt              : [sura:ayah] Arabic text (Uthmani script)
+  - trans/en.transliteration.txt   : sura|ayah|transliteration (with HTML tags)
+  - output/quran_hindi_farooq.txt  : [sura:ayah] Hindi translation (Farooq Khan)
+  - data/en.pickthall.txt          : one English line per ayah (Pickthall)
+  - output/quran_arabic.txt        : [sura:ayah] Arabic text (Uthmani script)
 """
 
 import os
@@ -97,7 +100,7 @@ with open('trans/en.transliteration.txt', 'r', encoding='utf-8') as f:
 # Format: [sura:ayah] text
 # ---------------------------------------------------------------------------
 hindi = {}
-with open('quran_hindi_farooq.txt', 'r', encoding='utf-8') as f:
+with open('output/quran_hindi_farooq.txt', 'r', encoding='utf-8') as f:
     for line in f:
         line = line.rstrip('\n')
         m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
@@ -109,7 +112,7 @@ with open('quran_hindi_farooq.txt', 'r', encoding='utf-8') as f:
 # Format: [sura:ayah] text
 # ---------------------------------------------------------------------------
 arabic = {}
-with open('quran_arabic.txt', 'r', encoding='utf-8') as f:
+with open('output/quran_arabic.txt', 'r', encoding='utf-8') as f:
     for line in f:
         line = line.rstrip('\n')
         m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
@@ -120,7 +123,7 @@ with open('quran_arabic.txt', 'r', encoding='utf-8') as f:
 # Load Pickthall translation  en.pickthall.txt  (sequential, one line/ayah)
 # ---------------------------------------------------------------------------
 pickthall = {}
-with open('en.pickthall.txt', 'r', encoding='utf-8') as f:
+with open('data/en.pickthall.txt', 'r', encoding='utf-8') as f:
     for sura_idx, size in enumerate(SURA_SIZE, 1):
         for ayah in range(1, size + 1):
             pickthall[(sura_idx, ayah)] = f.readline().rstrip('\n')
