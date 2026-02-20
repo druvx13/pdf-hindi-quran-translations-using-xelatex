@@ -22,10 +22,14 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
-td{padding:10px 12px;vertical-align:top;border:1px solid #ccd6e0}
-tr:nth-child(odd) td{background:#f9fbfd}
-.ayah-num{color:#888;font-size:.85em;min-width:42px;white-space:nowrap}
-.translit{font-style:italic;font-weight:600}
+td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
+.ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
+.label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
+.translit td{background:#f0f4f8}
+.trans td{background:#fff}
+.hindi td{background:#f5f0ff}
+.translit-text{font-style:normal;font-weight:600}
+.hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -38,22 +42,34 @@ footer{text-align:center;padding:20px;font-size:.85em;color:#666;border-top:1px 
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah 114: An-Nas (The Men)</h1>
-<div class='table-wrap'><table><thead><tr><th>#</th><th>Transliteration (Tanzil.net) &amp; Translation (Pickthall)</th></tr></thead><tbody>
-<tr><td class='ayah-num' rowspan='2'>1</td><td class='translit'>Qul aAAoothu birabbi alnnasi</td></tr>
-<tr><td class='trans'>Say: I seek refuge in the Lord of mankind,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>2</td><td class='translit'>Maliki alnnasi</td></tr>
-<tr><td class='trans'>The King of mankind,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>3</td><td class='translit'>Ilahi alnnasi</td></tr>
-<tr><td class='trans'>The god of mankind,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>4</td><td class='translit'>Min sharri alwaswasi alkhannasi</td></tr>
-<tr><td class='trans'>From the evil of the sneaking whisperer,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>5</td><td class='translit'>Allathee yuwaswisu fee sudoori alnnasi</td></tr>
-<tr><td class='trans'>Who whispereth in the hearts of mankind,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>6</td><td class='translit'>Mina aljinnati wa alnnasm</td></tr>
-<tr><td class='trans'>Of the jinn and of mankind.</td></tr>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<tr class='ayah-sep'><td colspan='2'>Ayah 1</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Qul aAAoo<u>th</U>u birabbi a<b>l</B>nn<u>a</U>s<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Say: I seek refuge in the Lord of mankind,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>कहो, "मैं शरण लेता हूँ मनुष्यों के रब की</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 2</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Maliki a<b>l</B>nn<u>a</U>s<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>The King of mankind,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>मनुष्यों के सम्राट की</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 3</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Il<u>a</U>hi a<b>l</B>nn<u>a</U>s<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>The god of mankind,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>मनुष्यों के उपास्य की</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 4</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Min sharri alwasw<u>a</U>si alkhann<u>a</U>s<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>From the evil of the sneaking whisperer,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>वसवसा डालनेवाले, खिसक जानेवाले की बुराई से</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 5</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Alla<u>th</U>ee yuwaswisu fee <u>s</U>udoori a<b>l</B>nn<u>a</U>s<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Who whispereth in the hearts of mankind,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जो मनुष्यों के सीनों में वसवसा डालता हैं</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 6</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Mina aljinnati wa<b> al</B>nn<u>a</U>s<b>m</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Of the jinn and of mankind.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जो जिन्नों में से भी होता हैं और मनुष्यों में से भी</td></tr>
 </tbody></table></div>
-<nav class='chapter-nav'><span><a href="113.html">&laquo; Surah 113</a></span><span></span></nav>
+<nav class='chapter-nav'><span><a href='113.html'>&laquo; Surah 113</a></span><span></span></nav>
 </main>
-<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain</footer>
+<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
 </body>
 </html>

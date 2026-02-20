@@ -22,10 +22,14 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
-td{padding:10px 12px;vertical-align:top;border:1px solid #ccd6e0}
-tr:nth-child(odd) td{background:#f9fbfd}
-.ayah-num{color:#888;font-size:.85em;min-width:42px;white-space:nowrap}
-.translit{font-style:italic;font-weight:600}
+td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
+.ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
+.label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
+.translit td{background:#f0f4f8}
+.trans td{background:#fff}
+.hindi td{background:#f5f0ff}
+.translit-text{font-style:normal;font-weight:600}
+.hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -38,48 +42,86 @@ footer{text-align:center;padding:20px;font-size:.85em;color:#666;border-top:1px 
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah 96: Al-'Alaq (The Clot)</h1>
-<div class='table-wrap'><table><thead><tr><th>#</th><th>Transliteration (Tanzil.net) &amp; Translation (Pickthall)</th></tr></thead><tbody>
-<tr><td class='ayah-num' rowspan='2'>1</td><td class='translit'>Iqra biismi rabbika allathee khalaqa</td></tr>
-<tr><td class='trans'>Read: In the name of thy Lord Who createth,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>2</td><td class='translit'>Khalaqa alinsana min AAalaqin</td></tr>
-<tr><td class='trans'>Createth man from a clot.</td></tr>
-<tr><td class='ayah-num' rowspan='2'>3</td><td class='translit'>Iqra warabbuka alakramu</td></tr>
-<tr><td class='trans'>Read: And thy Lord is the Most Bounteous,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>4</td><td class='translit'>Allathee AAallama bialqalami</td></tr>
-<tr><td class='trans'>Who teacheth by the pen,</td></tr>
-<tr><td class='ayah-num' rowspan='2'>5</td><td class='translit'>AAallama alinsana ma lam yaAAlam</td></tr>
-<tr><td class='trans'>Teacheth man that which he knew not.</td></tr>
-<tr><td class='ayah-num' rowspan='2'>6</td><td class='translit'>Kalla inna alinsana layatgha</td></tr>
-<tr><td class='trans'>Nay, but verily man is rebellious</td></tr>
-<tr><td class='ayah-num' rowspan='2'>7</td><td class='translit'>An raahu istaghna</td></tr>
-<tr><td class='trans'>That he thinketh himself independent!</td></tr>
-<tr><td class='ayah-num' rowspan='2'>8</td><td class='translit'>Inna ila rabbika alrrujAAa</td></tr>
-<tr><td class='trans'>Lo! unto thy Lord is the return.</td></tr>
-<tr><td class='ayah-num' rowspan='2'>9</td><td class='translit'>Araayta allathee yanha</td></tr>
-<tr><td class='trans'>Hast thou seen him who dissuadeth</td></tr>
-<tr><td class='ayah-num' rowspan='2'>10</td><td class='translit'>AAabdan itha salla</td></tr>
-<tr><td class='trans'>A slave when he prayeth?</td></tr>
-<tr><td class='ayah-num' rowspan='2'>11</td><td class='translit'>Araayta in kana AAala alhuda</td></tr>
-<tr><td class='trans'>Hast thou seen if he relieth on the guidance (of Allah)</td></tr>
-<tr><td class='ayah-num' rowspan='2'>12</td><td class='translit'>Aw amara bialttaqwa</td></tr>
-<tr><td class='trans'>Or enjoineth piety?</td></tr>
-<tr><td class='ayah-num' rowspan='2'>13</td><td class='translit'>Araayta in kaththaba watawalla</td></tr>
-<tr><td class='trans'>Hast thou seen if he denieth (Allah's guidance) and is froward?</td></tr>
-<tr><td class='ayah-num' rowspan='2'>14</td><td class='translit'>Alam yaAAlam bianna Allaha yara</td></tr>
-<tr><td class='trans'>Is he then unaware that Allah seeth?</td></tr>
-<tr><td class='ayah-num' rowspan='2'>15</td><td class='translit'>Kalla lain lam yantahi lanasfaAAan bialnnasiyati</td></tr>
-<tr><td class='trans'>Nay, but if he cease not We will seize him by the forelock -</td></tr>
-<tr><td class='ayah-num' rowspan='2'>16</td><td class='translit'>Nasiyatin kathibatin khatiatin</td></tr>
-<tr><td class='trans'>The lying, sinful forelock -</td></tr>
-<tr><td class='ayah-num' rowspan='2'>17</td><td class='translit'>FalyadAAu nadiyahu</td></tr>
-<tr><td class='trans'>Then let him call upon his henchmen!</td></tr>
-<tr><td class='ayah-num' rowspan='2'>18</td><td class='translit'>SanadAAu alzzabaniyata</td></tr>
-<tr><td class='trans'>We will call the guards of hell.</td></tr>
-<tr><td class='ayah-num' rowspan='2'>19</td><td class='translit'>Kalla la tutiAAhu waosjud waiqtarib</td></tr>
-<tr><td class='trans'>Nay, Obey not thou him. But prostrate thyself, and draw near (unto Allah).</td></tr>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<tr class='ayah-sep'><td colspan='2'>Ayah 1</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Iqra biismi rabbika alla<u>th</u>ee khalaq<b>a</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Read: In the name of thy Lord Who createth,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>पढ़ो, अपने रब के नाम के साथ जिसने पैदा किया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 2</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Khalaqa alins<u>a</u>na min AAalaq<b>in</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Createth man from a clot.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>पैदा किया मनुष्य को जमे हुए ख़ून के एक लोथड़े से</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 3</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Iqra warabbuka alakram<b>u</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Read: And thy Lord is the Most Bounteous,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>पढ़ो, हाल यह है कि तुम्हारा रब बड़ा ही उदार है,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 4</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Alla<u>th</u>ee AAallama bi<b>a</b>lqalam<b>i</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Who teacheth by the pen,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जिसने क़लम के द्वारा शिक्षा दी,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 5</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>AAallama alins<u>a</u>na m<u>a</u> lam yaAAlam</td></tr>
+<tr class='trans'><td class='label'>English</td><td>Teacheth man that which he knew not.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>मनुष्य को वह ज्ञान प्रदान किया जिस वह न जानता था</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 6</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Kall<u>a</u> inna alins<u>a</u>na laya<u>t</u>gh<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Nay, but verily man is rebellious</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>कदापि नहीं, मनुष्य सरकशी करता है,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 7</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>An ra<u>a</u>hu istaghn<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>That he thinketh himself independent!</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>इसलिए कि वह अपने आपको आत्मनिर्भर देखता है</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 8</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Inna il<u>a</u> rabbika a<b>l</b>rrujAA<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Lo! unto thy Lord is the return.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>निश्चय ही तुम्हारे रब ही की ओर पलटना है</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 9</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Araayta alla<u>th</u>ee yanh<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Hast thou seen him who dissuadeth</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>क्या तुमने देखा उस व्यक्ति को</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 10</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>AAabdan i<u>tha</u> <u>s</u>all<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>A slave when he prayeth?</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जो एक बन्दे को रोकता है, जब वह नमाज़ अदा करता है? -</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 11</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Araayta in k<u>a</u>na AAal<u>a</u> alhud<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Hast thou seen if he relieth on the guidance (of Allah)</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>तुम्हारा क्या विचार है? यदि वह सीधे मार्ग पर हो,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 12</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Aw amara bi<b>al</b>ttaqw<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Or enjoineth piety?</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>या परहेज़गारी का हुक्म दे (उसके अच्छा होने में क्या संदेह है)</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 13</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Araayta in ka<u>thth</u>aba watawall<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Hast thou seen if he denieth (Allah's guidance) and is froward?</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>तुम्हारा क्या विचार है? यदि उस (रोकनेवाले) ने झुठलाया और मुँह मोड़ा (तो उसके बुरा होने में क्या संदेह है) -</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 14</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Alam yaAAlam bianna All<u>a</u>ha yar<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Is he then unaware that Allah seeth?</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>क्या उसने नहीं जाना कि अल्लाह देख रहा है?</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 15</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Kall<u>a</u> lain lam yantahi lanasfaAAan bi<b>al</b>nn<u>as</u>iya<b>ti</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Nay, but if he cease not We will seize him by the forelock -</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>कदापि नहीं, यदि वह बाज़ न आया तो हम चोटी पकड़कर घसीटेंगे,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 16</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>N<u>as</u>iyatin k<u>ath</u>ibatin kh<u>at</u>ia<b>tin</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>The lying, sinful forelock -</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>झूठी, ख़ताकार चोटी</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 17</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>FalyadAAu n<u>a</u>diyah<b>u</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Then let him call upon his henchmen!</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>अब बुला ले वह अपनी मजलिस को!</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 18</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>SanadAAu a<b>l</b>zzab<u>a</u>niya<b>ta</b></td></tr>
+<tr class='trans'><td class='label'>English</td><td>We will call the guards of hell.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>हम भी बुलाए लेते है सिपाहियों को</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 19</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Kall<u>a</u> l<u>a</u> tu<u>t</u>iAAhu wa<b>o</b>sjud wa<b>i</b>qtarib</td></tr>
+<tr class='trans'><td class='label'>English</td><td>Nay, Obey not thou him. But prostrate thyself, and draw near (unto Allah).</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>कदापि नहीं, उसकी बात न मानो और सजदे करते और क़रीब होते रहो</td></tr>
 </tbody></table></div>
-<nav class='chapter-nav'><span><a href="095.html">&laquo; Surah 95</a></span><span><a href="097.html">Surah 97 &raquo;</a></span></nav>
+<nav class='chapter-nav'><span><a href='095.html'>&laquo; Surah 95</a></span><span><a href='097.html'>Surah 97 &raquo;</a></span></nav>
 </main>
-<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain</footer>
+<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
 </body>
 </html>
