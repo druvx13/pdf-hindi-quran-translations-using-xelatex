@@ -55,3 +55,18 @@ with open('qus.tex','w') as targetu, open('en.sahih.txt','r', encoding='utf-8') 
             ab=transu.readline()
             targetu.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
 
+
+with open('qut.tex','w') as targett, open('en.transliteration.txt','r', encoding='utf-8') as transt:
+    for x in range(114):
+        targett.write("\\chapter{%s}\n" % (suraname[x]) )
+        targett.write("\\begin{Arabic}\n\\Huge{\\centerline{\\basmalah}}\\end{Arabic}\n")
+        count=0
+        while(count<surasize[x]):
+            targett.write("\\flushright{\\begin{Arabic}\n")
+            targett.write("\\quranayah[%d][%d]\n" %(x+1,count+1))
+            targett.write("\\end{Arabic}}\n")
+            count=count+1
+            ab=transt.readline()
+            targett.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
+
+

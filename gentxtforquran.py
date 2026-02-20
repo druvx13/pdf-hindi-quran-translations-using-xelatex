@@ -9,12 +9,16 @@ translations = [
     ('hi.farooq.txt', 'quran_hindi_farooq.txt', 'Muhammad Farooq Khan and Muhammad Ahmed', 'Hindi'),
     ('hi.hindi.txt', 'quran_hindi_suhail.txt', 'Suhel Farooq Khan and Saifur Rahman Nadwi', 'Hindi'),
     ('en.sahih.txt', 'quran_english_sahih.txt', 'Saheeh International', 'English'),
+    ('en.transliteration.txt', 'quran_english_translit.txt', 'Tanzil.net', 'Transliteration'),
 ]
 
 for src_file, out_file, translator, lang in translations:
     with open(src_file, 'r', encoding='utf-8') as src, \
          open(out_file, 'w', encoding='utf-8') as out:
-        if lang == 'English':
+        if lang == 'Transliteration':
+            out.write("Quran - English Transliteration\n")
+            out.write("Source: %s\n" % translator)
+        elif lang == 'English':
             out.write("Quran - English Translation\n")
             out.write("Translator: %s\n" % translator)
         else:
