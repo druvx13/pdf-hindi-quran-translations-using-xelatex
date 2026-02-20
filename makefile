@@ -1,3 +1,6 @@
+Qur'an_Pickthall_Transliteration_Complete.pdf : en.transliteration.txt en.pickthall.txt generate_pickthall_transliteration_pdf.py
+	python3 generate_pickthall_transliteration_pdf.py
+
 farooq.pdf : farooq.tex
 	xelatex farooq.tex
 suhail.pdf : suhail.tex
