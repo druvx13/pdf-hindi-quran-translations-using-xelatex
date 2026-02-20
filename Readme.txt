@@ -42,3 +42,18 @@ gentxtforquran.py is to be run to generate formatted plain-text versions:
   quran_english_translit.txt  - English Transliteration (Tanzil.net)
   quran_english_pickthall.txt - English translation by Mohammed Marmaduke Pickthall
 
+
+generate_pickthall_transliteration_pdf.py is a Python script (requires reportlab) that
+generates a standalone, print-ready PDF combining:
+  - Tanzil.net Romanized Transliteration (en.transliteration.txt)
+  - Mohammed Marmaduke Pickthall English Translation (en.pickthall.txt)
+
+Run with:
+  python3 generate_pickthall_transliteration_pdf.py
+
+Output:
+  Qur'an_Pickthall_Transliteration_Complete.pdf
+
+  Features: 6x9 inch book format, clickable Table of Contents, page numbers,
+  serif translation text, monospace transliteration text, all 114 Surahs.
+
