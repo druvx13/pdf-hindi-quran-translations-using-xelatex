@@ -11,7 +11,8 @@ Sources used:
   - output/quran_hindi_suhail.txt   : [sura:ayah] Hindi translation (Suhail)
   - data/en.pickthall.txt           : one English line per ayah (Pickthall)
   - output/quran_english_yusufali.txt : [sura:ayah] English translation (Yusuf Ali)
-  - output/quran_arabic.txt         : [sura:ayah] Arabic text (Uthmani script)
+  - output/quran_english_sahih.txt    : [sura:ayah] English translation (Saheeh International)
+  - output/quran_arabic.txt           : [sura:ayah] Arabic text (Uthmani script)
 """
 
 import os
@@ -143,6 +144,18 @@ with open('output/quran_english_yusufali.txt', 'r', encoding='utf-8') as f:
             yusufali[(int(m.group(1)), int(m.group(2)))] = m.group(3)
 
 # ---------------------------------------------------------------------------
+# Load Saheeh International translation  quran_english_sahih.txt
+# Format: [sura:ayah] text
+# ---------------------------------------------------------------------------
+sahih = {}
+with open('output/quran_english_sahih.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
+        if m:
+            sahih[(int(m.group(1)), int(m.group(2)))] = m.group(3)
+
+# ---------------------------------------------------------------------------
 # Load Suhail Hindi translation  quran_hindi_suhail.txt
 # Format: [sura:ayah] text
 # ---------------------------------------------------------------------------
@@ -181,6 +194,7 @@ td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
 .translit td{background:#f0f4f8}
 .trans td{background:#fff}
 .trans-yusuf td{background:#e8f5e9}
+.trans-sahih td{background:#e3f2fd}
 .hindi td{background:#f5f0ff}
 .hindi-suhail td{background:#fff3e0}
 .translit-text{font-style:normal;font-weight:600}
@@ -210,14 +224,14 @@ HEADER_HTML = """\
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah {num}: {name}</h1>
-<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; English (Pickthall &amp; Yusuf Ali) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail)</th></tr></thead><tbody>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; English (Pickthall, Yusuf Ali &amp; Saheeh Int&#x2019;l) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail)</th></tr></thead><tbody>
 """
 
 FOOTER_HTML = """\
 </tbody></table></div>
 {nav}
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
 </body>
 </html>"""
 
@@ -246,6 +260,7 @@ for sura_idx in range(1, 115):
             tl = translit.get((sura_idx, ayah), '')
             pk = pickthall.get((sura_idx, ayah), '')
             ya = yusufali.get((sura_idx, ayah), '')
+            sa = sahih.get((sura_idx, ayah), '')
             hi = hindi.get((sura_idx, ayah), '')
             hs = hindi_suhail.get((sura_idx, ayah), '')
             ar = arabic.get((sura_idx, ayah), '')
@@ -255,9 +270,10 @@ for sura_idx in range(1, 115):
                 "<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>%s</td></tr>\n"
                 "<tr class='trans'><td class='label'>English (Pickthall)</td><td>%s</td></tr>\n"
                 "<tr class='trans-yusuf'><td class='label'>English (Yusuf Ali)</td><td>%s</td></tr>\n"
+                "<tr class='trans-sahih'><td class='label'>English (Saheeh Int&#x2019;l)</td><td>%s</td></tr>\n"
                 "<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Farooq)</td><td class='hindi-text'>%s</td></tr>\n"
                 "<tr class='hindi-suhail'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Suhail)</td><td class='hindi-suhail-text'>%s</td></tr>\n"
-                % (ayah, ar, tl, pk, ya, hi, hs)
+                % (ayah, ar, tl, pk, ya, sa, hi, hs)
             )
         out.write(FOOTER_HTML.format(nav=nav))
 
@@ -289,6 +305,7 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <em>Transliteration:</em> Tanzil.net English Transliteration of the Qur&#x2019;an.<br>
 <em>English Translation:</em> Mohammed Marmaduke Pickthall, <em>The Meaning of the Glorious Koran</em> (1930) &mdash; Public Domain.<br>
 <em>English Translation:</em> Abdullah Yusuf Ali, <em>The Holy Quran: Text, Translation and Commentary</em> &mdash; Public Domain.<br>
+<em>English Translation:</em> Saheeh International.<br>
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Muhammad Farooq Khan &amp; Muhammad Ahmed.<br>
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Suhel Farooq Khan &amp; Saifur Rahman Nadwi.<br>
 Texts are reproduced verbatim; no alterations have been made.
@@ -301,7 +318,7 @@ Texts are reproduced verbatim; no alterations have been made.
     out.write("""\
 </div>
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
 </body>
 </html>""")
 
