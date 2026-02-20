@@ -1,0 +1,64 @@
+\documentclass{report}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=true,          % non-Latin characters in Acrobat's bookmarks
+    pdftoolbar=true,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Quran: Transliteration and English Translation},    % title
+    pdfauthor={Tanzil.net (Transliteration) and Mohammed Marmaduke Pickthall (Translation)},     % author
+    pdfsubject={English Transliteration and Translation of the Holy Quran},   % subject of the document
+    pdfcreator={XeLaTeX},   % creator of the document
+    pdfproducer={XeLaTeX},  % producer of the document
+    pdfkeywords={Quran, transliteration, Pickthall, English, Islam}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage{forloop}
+\usepackage{quran}
+
+%%% For accessing system, OTF and TTF fonts
+%%% (would have been loaded by polylossia anyway)
+\usepackage{fontspec}
+
+%%% For language switching -- like babel, but for xelatex
+\usepackage{polyglossia}
+
+%%% For those cool-looking menus and keystrokes
+\usepackage{menukeys}
+
+%%% For the xelatex (and other LaTeX friends) logos
+\usepackage{hologo}
+
+\date{}
+\setmainlanguage{english}
+\setotherlanguages{arabic} %% Arabic for Quranic text
+
+\makeatletter
+    \let\pgfpicture\origin@pgfpicture%
+    \let\endpgfpicture\origin@endpgfpicture%
+\makeatother
+
+% define font for Arabic
+\newfontfamily\arabicfont[Script=Arabic,Scale=2]{Scheherazade}
+
+
+\title{The Holy Quran\\[0.5em]
+\large English Transliteration \& Translation\\[1em]
+\normalsize Transliteration by Tanzil.net\\
+Translation by Mohammed Marmaduke Pickthall}
+\author{Tanzil.net (Transliteration)\\Mohammed Marmaduke Pickthall (Translation)}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\input{qutpk.tex}
+\end{document}

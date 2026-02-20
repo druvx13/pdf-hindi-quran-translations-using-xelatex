@@ -34,6 +34,14 @@ xelatex pickthall.tex
 
 gives pickthall.pdf which is Mohammed Marmaduke Pickthall's English Quran translation
 
+xelatex translit_pickthall.tex
+
+gives translit_pickthall.pdf which is a combined PDF containing:
+  - English Transliteration (Tanzil.net) in italics
+  - English Translation by Mohammed Marmaduke Pickthall
+For each verse: the Arabic text is shown right-aligned, followed by the transliteration
+and the Pickthall translation, separated by a thin rule for easy reading.
+
 
 gentxtforquran.py is to be run to generate formatted plain-text versions:
   quran_hindi_farooq.txt      - Hindi translation by Muhammad Farooq Khan and Muhammad Ahmed

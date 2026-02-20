@@ -84,3 +84,22 @@ with open('qupk.tex','w') as targetpk, open('en.pickthall.txt','r', encoding='ut
             targetpk.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
 
 
+with open('qutpk.tex','w', encoding='utf-8') as targetutpk, \
+     open('en.transliteration.txt','r', encoding='utf-8') as transt, \
+     open('en.pickthall.txt','r', encoding='utf-8') as transpk:
+    for x in range(114):
+        targetutpk.write("\\chapter{%s}\n" % (suraname[x]) )
+        targetutpk.write("\\begin{Arabic}\n\\Huge{\\centerline{\\basmalah}}\\end{Arabic}\n")
+        count=0
+        while(count<surasize[x]):
+            targetutpk.write("\\flushright{\\begin{Arabic}\n")
+            targetutpk.write("\\quranayah[%d][%d]\n" %(x+1,count+1))
+            targetutpk.write("\\end{Arabic}}\n")
+            count=count+1
+            at=transt.readline()
+            ap=transpk.readline()
+            targetutpk.write("\\flushleft{\\small\\textsc{Transliteration:} \\textit{%s}}\n" % at.rstrip('\n'))
+            targetutpk.write("\\flushleft{\\small\\textsc{Translation:} %s}\n" % ap.rstrip('\n'))
+            targetutpk.write("\\vspace{2pt}\\noindent\\rule{\\linewidth}{0.2pt}\\vspace{2pt}\n")
+
+
