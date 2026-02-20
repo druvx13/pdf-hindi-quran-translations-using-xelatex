@@ -10,6 +10,7 @@ translations = [
     ('hi.hindi.txt', 'quran_hindi_suhail.txt', 'Suhel Farooq Khan and Saifur Rahman Nadwi', 'Hindi'),
     ('en.sahih.txt', 'quran_english_sahih.txt', 'Saheeh International', 'English'),
     ('en.transliteration.txt', 'quran_english_translit.txt', 'Tanzil.net', 'Transliteration'),
+    ('en.pickthall.txt', 'quran_english_pickthall.txt', 'Mohammed Marmaduke Pickthall', 'English'),
 ]
 
 for src_file, out_file, translator, lang in translations:
