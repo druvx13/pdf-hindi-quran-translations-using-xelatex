@@ -20,6 +20,7 @@ translations = [
     ('data/en.sahih.txt', 'output/quran_english_sahih.txt', 'Saheeh International', 'English'),
     ('data/en.transliteration.txt', 'output/quran_english_translit.txt', 'Tanzil.net', 'Transliteration'),
     ('data/en.pickthall.txt', 'output/quran_english_pickthall.txt', 'Mohammed Marmaduke Pickthall', 'English'),
+    ('data/en.yusufali.txt', 'output/quran_english_yusufali.txt', 'Abdullah Yusuf Ali', 'English-Piped'),
     ('data/ar.quran.txt', 'output/quran_arabic.txt', 'Standard Arabic Uthmani Script', 'Arabic'),
 ]
 
@@ -29,7 +30,7 @@ for src_file, out_file, translator, lang in translations:
         if lang == 'Transliteration':
             out.write("Quran - English Transliteration\n")
             out.write("Source: %s\n" % translator)
-        elif lang == 'English':
+        elif lang in ('English', 'English-Piped'):
             out.write("Quran - English Translation\n")
             out.write("Translator: %s\n" % translator)
         elif lang == 'Arabic':
@@ -39,11 +40,29 @@ for src_file, out_file, translator, lang in translations:
             out.write("Quran - Hindi Anuvad\n")
             out.write("Anuvadak: %s\n" % translator)
         out.write("=" * 60 + "\n\n")
-        for sura_num in range(114):
-            out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
-            out.write("-" * 40 + "\n")
-            for ayah_num in range(1, surasize[sura_num] + 1):
-                line = src.readline().rstrip('\n')
-                out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
-            out.write("\n")
+        if lang == 'English-Piped':
+            # Parse sura|ayah|text format (comment lines start with #)
+            ayah_text = {}
+            for raw_line in src:
+                raw_line = raw_line.rstrip('\n')
+                if not raw_line or raw_line.startswith('#'):
+                    continue
+                parts = raw_line.split('|', 2)
+                if len(parts) == 3:
+                    ayah_text[(int(parts[0]), int(parts[1]))] = parts[2]
+            for sura_num in range(114):
+                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                out.write("-" * 40 + "\n")
+                for ayah_num in range(1, surasize[sura_num] + 1):
+                    line = ayah_text.get((sura_num + 1, ayah_num), '')
+                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
+                out.write("\n")
+        else:
+            for sura_num in range(114):
+                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                out.write("-" * 40 + "\n")
+                for ayah_num in range(1, surasize[sura_num] + 1):
+                    line = src.readline().rstrip('\n')
+                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
+                out.write("\n")
     print("Generated: %s" % out_file)
