@@ -41,4 +41,5 @@ gentxtforquran.py is to be run to generate formatted plain-text versions:
   quran_english_sahih.txt     - English translation by Saheeh International
   quran_english_translit.txt  - English Transliteration (Tanzil.net)
   quran_english_pickthall.txt - English translation by Mohammed Marmaduke Pickthall
+  quran_arabic.txt            - Arabic Unicode text (Standard Arabic Uthmani Script, extracted from quran.sty)
 

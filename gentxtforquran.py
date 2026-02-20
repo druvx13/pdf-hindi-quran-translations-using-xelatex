@@ -11,6 +11,7 @@ translations = [
     ('en.sahih.txt', 'quran_english_sahih.txt', 'Saheeh International', 'English'),
     ('en.transliteration.txt', 'quran_english_translit.txt', 'Tanzil.net', 'Transliteration'),
     ('en.pickthall.txt', 'quran_english_pickthall.txt', 'Mohammed Marmaduke Pickthall', 'English'),
+    ('ar.quran.txt', 'quran_arabic.txt', 'Standard Arabic Uthmani Script', 'Arabic'),
 ]
 
 for src_file, out_file, translator, lang in translations:
@@ -22,7 +23,10 @@ for src_file, out_file, translator, lang in translations:
         elif lang == 'English':
             out.write("Quran - English Translation\n")
             out.write("Translator: %s\n" % translator)
-        else:
+        elif lang == 'Arabic':
+            out.write("Quran - Arabic\n")
+            out.write("Script: %s\n" % translator)
+        elif lang == 'Hindi':
             out.write("Quran - Hindi Anuvad\n")
             out.write("Anuvadak: %s\n" % translator)
         out.write("=" * 60 + "\n\n")
