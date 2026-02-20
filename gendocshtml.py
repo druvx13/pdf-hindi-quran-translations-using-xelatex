@@ -6,6 +6,7 @@ Sources used:
   - trans/en.transliteration.txt  : sura|ayah|transliteration (with HTML tags)
   - quran_hindi_farooq.txt        : [sura:ayah] Hindi translation (Farooq Khan)
   - en.pickthall.txt              : one English line per ayah (Pickthall)
+  - quran_arabic.txt              : [sura:ayah] Arabic text (Uthmani script)
 """
 
 import os
@@ -104,6 +105,18 @@ with open('quran_hindi_farooq.txt', 'r', encoding='utf-8') as f:
             hindi[(int(m.group(1)), int(m.group(2)))] = m.group(3)
 
 # ---------------------------------------------------------------------------
+# Load Arabic text  quran_arabic.txt
+# Format: [sura:ayah] text
+# ---------------------------------------------------------------------------
+arabic = {}
+with open('quran_arabic.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
+        if m:
+            arabic[(int(m.group(1)), int(m.group(2)))] = m.group(3)
+
+# ---------------------------------------------------------------------------
 # Load Pickthall translation  en.pickthall.txt  (sequential, one line/ayah)
 # ---------------------------------------------------------------------------
 pickthall = {}
@@ -141,6 +154,8 @@ td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
 .hindi td{background:#f5f0ff}
 .translit-text{font-style:normal;font-weight:600}
 .hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
+.arabic td{background:#fff8e1}
+.arabic-text{font-family:'Scheherazade New','Amiri','Traditional Arabic',serif;font-size:1.5em;direction:rtl;text-align:right;line-height:2}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -163,14 +178,14 @@ HEADER_HTML = """\
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah {num}: {name}</h1>
-<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
 """
 
 FOOTER_HTML = """\
 </tbody></table></div>
 {nav}
 </main>
-<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
 </body>
 </html>"""
 
@@ -199,12 +214,14 @@ for sura_idx in range(1, 115):
             tl = translit.get((sura_idx, ayah), '')
             pk = pickthall.get((sura_idx, ayah), '')
             hi = hindi.get((sura_idx, ayah), '')
+            ar = arabic.get((sura_idx, ayah), '')
             out.write(
                 "<tr class='ayah-sep'><td colspan='2'>Ayah %d</td></tr>\n"
+                "<tr class='arabic'><td class='label'>&#1593;&#1614;&#1585;&#1614;&#1576;&#1616;&#1610;</td><td class='arabic-text'>%s</td></tr>\n"
                 "<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>%s</td></tr>\n"
                 "<tr class='trans'><td class='label'>English</td><td>%s</td></tr>\n"
                 "<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>%s</td></tr>\n"
-                % (ayah, tl, pk, hi)
+                % (ayah, ar, tl, pk, hi)
             )
         out.write(FOOTER_HTML.format(nav=nav))
 
@@ -229,9 +246,10 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <body>
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
-<h1>Qur&#x2019;an &mdash; Transliteration, English &amp; Hindi Translation</h1>
+<h1>Qur&#x2019;an &mdash; Arabic, Transliteration, English &amp; Hindi Translation</h1>
 <div class="notice">
 <strong>Public Domain Notice &amp; Source Attribution</strong><br>
+<em>Arabic Text:</em> Standard Arabic Uthmani Script.<br>
 <em>Transliteration:</em> Tanzil.net English Transliteration of the Qur&#x2019;an.<br>
 <em>English Translation:</em> Mohammed Marmaduke Pickthall, <em>The Meaning of the Glorious Koran</em> (1930) &mdash; Public Domain.<br>
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Muhammad Farooq Khan &amp; Muhammad Ahmed.<br>
@@ -245,7 +263,7 @@ Texts are reproduced verbatim; no alterations have been made.
     out.write("""\
 </div>
 </main>
-<footer>Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed</footer>
 </body>
 </html>""")
 
