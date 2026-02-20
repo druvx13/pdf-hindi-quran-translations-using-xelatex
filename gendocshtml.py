@@ -133,11 +133,14 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
-td{padding:10px 12px;vertical-align:top;border:1px solid #ccd6e0}
-tr:nth-child(odd) td{background:#f9fbfd}
-.ayah-num{color:#888;font-size:.85em;min-width:42px;white-space:nowrap}
-.translit{font-style:normal;font-weight:600}
-.hindi{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
+td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
+.ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
+.label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
+.translit td{background:#f0f4f8}
+.trans td{background:#fff}
+.hindi td{background:#f5f0ff}
+.translit-text{font-style:normal;font-weight:600}
+.hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -160,7 +163,7 @@ HEADER_HTML = """\
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah {num}: {name}</h1>
-<div class='table-wrap'><table><thead><tr><th>#</th><th>Transliteration (Tanzil.net)</th><th>Translation (Pickthall)</th><th>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
 """
 
 FOOTER_HTML = """\
@@ -197,12 +200,11 @@ for sura_idx in range(1, 115):
             pk = pickthall.get((sura_idx, ayah), '')
             hi = hindi.get((sura_idx, ayah), '')
             out.write(
-                "<tr>"
-                "<td class='ayah-num'>%d</td>"
-                "<td class='translit'>%s</td>"
-                "<td class='trans'>%s</td>"
-                "<td class='hindi'>%s</td>"
-                "</tr>\n" % (ayah, tl, pk, hi)
+                "<tr class='ayah-sep'><td colspan='2'>Ayah %d</td></tr>\n"
+                "<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>%s</td></tr>\n"
+                "<tr class='trans'><td class='label'>English</td><td>%s</td></tr>\n"
+                "<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>%s</td></tr>\n"
+                % (ayah, tl, pk, hi)
             )
         out.write(FOOTER_HTML.format(nav=nav))
 

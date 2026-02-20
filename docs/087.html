@@ -22,11 +22,14 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
-td{padding:10px 12px;vertical-align:top;border:1px solid #ccd6e0}
-tr:nth-child(odd) td{background:#f9fbfd}
-.ayah-num{color:#888;font-size:.85em;min-width:42px;white-space:nowrap}
-.translit{font-style:normal;font-weight:600}
-.hindi{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
+td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
+.ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
+.label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
+.translit td{background:#f0f4f8}
+.trans td{background:#fff}
+.hindi td{background:#f5f0ff}
+.translit-text{font-style:normal;font-weight:600}
+.hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -39,26 +42,83 @@ footer{text-align:center;padding:20px;font-size:.85em;color:#666;border-top:1px 
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah 87: Al-A'la (The Most High)</h1>
-<div class='table-wrap'><table><thead><tr><th>#</th><th>Transliteration (Tanzil.net)</th><th>Translation (Pickthall)</th><th>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
-<tr><td class='ayah-num'>1</td><td class='translit'>Sabbi<u>h</u>i isma rabbika alaAAl<u>a</u></td><td class='trans'>Praise the name of thy Lord the Most High,</td><td class='hindi'>तसबीह करो, अपने सर्वाच्च रब के नाम की,</td></tr>
-<tr><td class='ayah-num'>2</td><td class='translit'>Alla<u>th</u>ee khalaqa fasaww<u>a</u></td><td class='trans'>Who createth, then disposeth;</td><td class='hindi'>जिसने पैदा किया, फिर ठीक-ठाक किया,</td></tr>
-<tr><td class='ayah-num'>3</td><td class='translit'>Wa<b>a</b>lla<u>th</u>ee qaddara fahad<u>a</u></td><td class='trans'>Who measureth, then guideth;</td><td class='hindi'>जिसने निर्धारित किया, फिर मार्ग दिखाया,</td></tr>
-<tr><td class='ayah-num'>4</td><td class='translit'>Wa<b>a</b>lla<u>th</u>ee akhraja almarAA<u>a</u></td><td class='trans'>Who bringeth forth the pasturage,</td><td class='hindi'>जिसने वनस्पति उगाई,</td></tr>
-<tr><td class='ayah-num'>5</td><td class='translit'>FajaAAalahu ghuth<u>a</u>an a<u>h</u>w<u>a</u></td><td class='trans'>Then turneth it to russet stubble.</td><td class='hindi'>फिर उसे ख़ूब घना और हरा-भरा कर दिया</td></tr>
-<tr><td class='ayah-num'>6</td><td class='translit'>Sanuqrioka fal<u>a</u> tans<u>a</u></td><td class='trans'>We shall make thee read (O Muhammad) so that thou shalt not forget</td><td class='hindi'>हम तुम्हें पढ़ा देंगे, फिर तुम भूलोगे नहीं</td></tr>
-<tr><td class='ayah-num'>7</td><td class='translit'>Ill<u>a</u> m<u>a</u> sh<u>a</u>a All<u>a</u>hu innahu yaAAlamu aljahra wam<u>a</u> yakhf<u>a</u></td><td class='trans'>Save that which Allah willeth. Lo! He knoweth the disclosed and that which still is hidden;</td><td class='hindi'>बात यह है कि अल्लाह की इच्छा ही क्रियान्वित है। निश्चय ही वह जानता है खुले को भी और उसे भी जो छिपा रहे</td></tr>
-<tr><td class='ayah-num'>8</td><td class='translit'>Wanuyassiruka lilyusr<u>a</u></td><td class='trans'>And We shall ease thy way unto the state of ease.</td><td class='hindi'>हम तुम्हें सहज ढंग से उस चीज़ की पात्र बना देंगे जो सहज एवं मृदुल (आरामदायक) है</td></tr>
-<tr><td class='ayah-num'>9</td><td class='translit'>Fa<u>th</u>akkir in nafaAAati a<b>l</b><u>thth</u>ikr<u>a</u></td><td class='trans'>Therefor remind (men), for of use is the reminder.</td><td class='hindi'>अतः नसीहत करो, यदि नसीहत लाभप्रद हो!</td></tr>
-<tr><td class='ayah-num'>10</td><td class='translit'>Saya<u>thth</u>akkaru man yakhsh<u>a</u></td><td class='trans'>He will heed who feareth,</td><td class='hindi'>नसीहत हासिल कर लेगा जिसको डर होगा,</td></tr>
-<tr><td class='ayah-num'>11</td><td class='translit'>Wayatajannabuh<u>a</u> alashq<u>a</u></td><td class='trans'>But the most hapless will flout it,</td><td class='hindi'>किन्तु उससे कतराएगा वह अत्यन्त दुर्भाग्यवाला,</td></tr>
-<tr><td class='ayah-num'>12</td><td class='translit'>Alla<u>th</u>ee ya<u>s</u>l<u>a</u> a<b>l</b>nn<u>a</u>ra alkubr<u>a</u></td><td class='trans'>He who will be flung to the great Fire</td><td class='hindi'>जो बड़ी आग में पड़ेगा,</td></tr>
-<tr><td class='ayah-num'>13</td><td class='translit'>Thumma l<u>a</u> yamootu feeh<u>a</u> wal<u>a</u> ya<u>h</u>y<u>a</u></td><td class='trans'>Wherein he will neither die nor live.</td><td class='hindi'>फिर वह उसमें न मरेगा न जिएगा</td></tr>
-<tr><td class='ayah-num'>14</td><td class='translit'>Qad afla<u>h</u>a man tazakk<u>a</u></td><td class='trans'>He is successful who groweth,</td><td class='hindi'>सफल हो गया वह जिसने अपने आपको निखार लिया,</td></tr>
-<tr><td class='ayah-num'>15</td><td class='translit'>Wa<u>th</u>akara isma rabbihi fa<u>s</u>all<u>a</u></td><td class='trans'>And remembereth the name of his Lord, so prayeth,</td><td class='hindi'>और अपने रब के नाम का स्मरण किया, अतः नमाज़ अदा की</td></tr>
-<tr><td class='ayah-num'>16</td><td class='translit'>Bal tuthiroona al<u>h</u>ay<u>a</u>ta a<b>l</b>dduny<u>a</u></td><td class='trans'>But ye prefer the life of the world</td><td class='hindi'>नहीं, बल्कि तुम तो सांसारिक जीवन को प्राथमिकता देते हो,</td></tr>
-<tr><td class='ayah-num'>17</td><td class='translit'>Wa<b>a</b>l<u>a</u>khiratu khayrun waabq<u>a</u></td><td class='trans'>Although the Hereafter is better and more lasting.</td><td class='hindi'>हालाँकि आख़िरत अधिक उत्तम और शेष रहनेवाली है</td></tr>
-<tr><td class='ayah-num'>18</td><td class='translit'>Inna h<u>atha</u> lafee a<b>l</b><u>ss</u>u<u>h</u>ufi alool<u>a</u></td><td class='trans'>Lo! This is in the former scrolls.</td><td class='hindi'>निस्संदेह यही बात पहले की किताबों में भी है;</td></tr>
-<tr><td class='ayah-num'>19</td><td class='translit'><u>S</u>u<u>h</u>ufi ibr<u>a</u>heema wamoos<u>a</u></td><td class='trans'>The Books of Abraham and Moses.</td><td class='hindi'>इबराईम और मूसा की किताबों में</td></tr>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<tr class='ayah-sep'><td colspan='2'>Ayah 1</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Sabbi<u>h</u>i isma rabbika alaAAl<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Praise the name of thy Lord the Most High,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>तसबीह करो, अपने सर्वाच्च रब के नाम की,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 2</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Alla<u>th</u>ee khalaqa fasaww<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Who createth, then disposeth;</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जिसने पैदा किया, फिर ठीक-ठाक किया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 3</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>lla<u>th</u>ee qaddara fahad<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Who measureth, then guideth;</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जिसने निर्धारित किया, फिर मार्ग दिखाया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 4</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>lla<u>th</u>ee akhraja almarAA<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Who bringeth forth the pasturage,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जिसने वनस्पति उगाई,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 5</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>FajaAAalahu ghuth<u>a</u>an a<u>h</u>w<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Then turneth it to russet stubble.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>फिर उसे ख़ूब घना और हरा-भरा कर दिया</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 6</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Sanuqrioka fal<u>a</u> tans<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>We shall make thee read (O Muhammad) so that thou shalt not forget</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>हम तुम्हें पढ़ा देंगे, फिर तुम भूलोगे नहीं</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 7</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Ill<u>a</u> m<u>a</u> sh<u>a</u>a All<u>a</u>hu innahu yaAAlamu aljahra wam<u>a</u> yakhf<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Save that which Allah willeth. Lo! He knoweth the disclosed and that which still is hidden;</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>बात यह है कि अल्लाह की इच्छा ही क्रियान्वित है। निश्चय ही वह जानता है खुले को भी और उसे भी जो छिपा रहे</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 8</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wanuyassiruka lilyusr<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And We shall ease thy way unto the state of ease.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>हम तुम्हें सहज ढंग से उस चीज़ की पात्र बना देंगे जो सहज एवं मृदुल (आरामदायक) है</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 9</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Fa<u>th</u>akkir in nafaAAati a<b>l</b><u>thth</u>ikr<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Therefor remind (men), for of use is the reminder.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>अतः नसीहत करो, यदि नसीहत लाभप्रद हो!</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 10</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Saya<u>thth</u>akkaru man yakhsh<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>He will heed who feareth,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>नसीहत हासिल कर लेगा जिसको डर होगा,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 11</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wayatajannabuh<u>a</u> alashq<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>But the most hapless will flout it,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>किन्तु उससे कतराएगा वह अत्यन्त दुर्भाग्यवाला,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 12</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Alla<u>th</u>ee ya<u>s</u>l<u>a</u> a<b>l</b>nn<u>a</u>ra alkubr<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>He who will be flung to the great Fire</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जो बड़ी आग में पड़ेगा,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 13</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Thumma l<u>a</u> yamootu feeh<u>a</u> wal<u>a</u> ya<u>h</u>y<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Wherein he will neither die nor live.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>फिर वह उसमें न मरेगा न जिएगा</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 14</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Qad afla<u>h</u>a man tazakk<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>He is successful who groweth,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>सफल हो गया वह जिसने अपने आपको निखार लिया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 15</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<u>th</u>akara isma rabbihi fa<u>s</u>all<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And remembereth the name of his Lord, so prayeth,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और अपने रब के नाम का स्मरण किया, अतः नमाज़ अदा की</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 16</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Bal tuthiroona al<u>h</u>ay<u>a</u>ta a<b>l</b>dduny<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>But ye prefer the life of the world</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>नहीं, बल्कि तुम तो सांसारिक जीवन को प्राथमिकता देते हो,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 17</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>l<u>a</u>khiratu khayrun waabq<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Although the Hereafter is better and more lasting.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>हालाँकि आख़िरत अधिक उत्तम और शेष रहनेवाली है</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 18</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Inna h<u>atha</u> lafee a<b>l</b><u>ss</u>u<u>h</u>ufi alool<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>Lo! This is in the former scrolls.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>निस्संदेह यही बात पहले की किताबों में भी है;</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 19</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'><u>S</u>u<u>h</u>ufi ibr<u>a</u>heema wamoos<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>The Books of Abraham and Moses.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>इबराईम और मूसा की किताबों में</td></tr>
 </tbody></table></div>
 <nav class='chapter-nav'><span><a href='086.html'>&laquo; Surah 86</a></span><span><a href='088.html'>Surah 88 &raquo;</a></span></nav>
 </main>

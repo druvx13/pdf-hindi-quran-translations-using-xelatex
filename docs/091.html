@@ -22,11 +22,14 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
-td{padding:10px 12px;vertical-align:top;border:1px solid #ccd6e0}
-tr:nth-child(odd) td{background:#f9fbfd}
-.ayah-num{color:#888;font-size:.85em;min-width:42px;white-space:nowrap}
-.translit{font-style:normal;font-weight:600}
-.hindi{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
+td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
+.ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
+.label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
+.translit td{background:#f0f4f8}
+.trans td{background:#fff}
+.hindi td{background:#f5f0ff}
+.translit-text{font-style:normal;font-weight:600}
+.hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
   padding:16px 0;margin-top:8px;border-top:1px solid #ccd6e0}
 nav.chapter-nav a{display:inline-block;padding:8px 16px;background:#1a3a5c;color:#fff;
@@ -39,22 +42,67 @@ footer{text-align:center;padding:20px;font-size:.85em;color:#666;border-top:1px 
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah 91: Ash-Shams (The Sun)</h1>
-<div class='table-wrap'><table><thead><tr><th>#</th><th>Transliteration (Tanzil.net)</th><th>Translation (Pickthall)</th><th>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
-<tr><td class='ayah-num'>1</td><td class='translit'>Wa<b>al</b>shshamsi wa<u>d</u>u<u>ha</u>h<u>a</u></td><td class='trans'>By the sun and his brightness,</td><td class='hindi'>साक्षी है सूर्य और उसकी प्रभा,</td></tr>
-<tr><td class='ayah-num'>2</td><td class='translit'>Wa<b>a</b>lqamari i<u>tha</u> tal<u>a</u>h<u>a</u></td><td class='trans'>And the moon when she followeth him,</td><td class='hindi'>और चन्द्रमा जबकि वह उनके पीछे आए,</td></tr>
-<tr><td class='ayah-num'>3</td><td class='translit'>Wa<b>al</b>nnah<u>a</u>ri i<u>tha</u> jall<u>a</u>h<u>a</u></td><td class='trans'>And the day when it revealeth him,</td><td class='hindi'>और दिन, जबकि वह उसे प्रकट कर दे,</td></tr>
-<tr><td class='ayah-num'>4</td><td class='translit'>Wa<b>a</b>llayli i<u>tha</u> yaghsh<u>a</u>h<u>a</u></td><td class='trans'>And the night when it enshroudeth him,</td><td class='hindi'>और रात, जबकि वह उसको ढाँक ले</td></tr>
-<tr><td class='ayah-num'>5</td><td class='translit'>Wa<b>al</b>ssam<u>a</u>i wam<u>a</u> ban<u>a</u>h<u>a</u></td><td class='trans'>And the heaven and Him Who built it,</td><td class='hindi'>और आकाश और जैसा कुछ उसे उठाया,</td></tr>
-<tr><td class='ayah-num'>6</td><td class='translit'>Wa<b>a</b>lar<u>d</u>i wam<u>a</u> <u>t</u>a<u>ha</u>h<u>a</u></td><td class='trans'>And the earth and Him Who spread it,</td><td class='hindi'>और धरती और जैसा कुछ उसे बिछाया</td></tr>
-<tr><td class='ayah-num'>7</td><td class='translit'>Wanafsin wam<u>a</u> saww<u>a</u>h<u>a</u></td><td class='trans'>And a soul and Him Who perfected it</td><td class='hindi'>और आत्मा और जैसा कुछ उसे सँवारा</td></tr>
-<tr><td class='ayah-num'>8</td><td class='translit'>Faalhamah<u>a</u> fujoorah<u>a</u> wataqw<u>a</u>h<u>a</u></td><td class='trans'>And inspired it (with conscience of) what is wrong for it and (what is) right for it.</td><td class='hindi'>फिर उसके दिल में डाली उसकी बुराई और उसकी परहेज़गारी</td></tr>
-<tr><td class='ayah-num'>9</td><td class='translit'>Qad afla<u>h</u>a man zakk<u>a</u>h<u>a</u></td><td class='trans'>He is indeed successful who causeth it to grow,</td><td class='hindi'>सफल हो गया जिसने उसे विकसित किया</td></tr>
-<tr><td class='ayah-num'>10</td><td class='translit'>Waqad kh<u>a</u>ba man dass<u>a</u>h<u>a</u></td><td class='trans'>And he is indeed a failure who stunteth it.</td><td class='hindi'>और असफल हुआ जिसने उसे दबा दिया</td></tr>
-<tr><td class='ayah-num'>11</td><td class='translit'>Ka<u>thth</u>abat thamoodu bi<u>t</u>aghw<u>a</u>h<u>a</u></td><td class='trans'>(The tribe of) Thamud denied (the truth) in their rebellious pride,</td><td class='hindi'>समूद ने अपनी सरकशी से झुठलाया,</td></tr>
-<tr><td class='ayah-num'>12</td><td class='translit'>I<u>th</u>i inbaAAatha ashq<u>a</u>h<u>a</u></td><td class='trans'>When the basest of them broke forth</td><td class='hindi'>जब उनमें का सबसे बड़ा दुर्भाग्यशाली उठ खड़ा हुआ,</td></tr>
-<tr><td class='ayah-num'>13</td><td class='translit'>Faq<u>a</u>la lahum rasoolu All<u>a</u>hi n<u>a</u>qata All<u>a</u>hi wasuqy<u>a</u>h<u>a</u></td><td class='trans'>And the messenger of Allah said: It is the she-camel of Allah, so let her drink!</td><td class='hindi'>तो अल्लाह के रसूल ने उनसे कहा, "सावधान, अल्लाह की ऊँटनी और उसके पिलाने (की बारी) से।"</td></tr>
-<tr><td class='ayah-num'>14</td><td class='translit'>Faka<u>thth</u>aboohu faAAaqarooh<u>a</u> fadamdama AAalayhim rabbuhum bi<u>th</u>anbihim fasaww<u>a</u>h<u>a</u></td><td class='trans'>But they denied him, and they hamstrung her, so Allah doomed them for their sin and rased (their dwellings).</td><td class='hindi'>किन्तु उन्होंने उसे झुठलाया और उस ऊँटनी की कूचें काट डाली। अन्ततः उनके रब ने उनके गुनाह के कारण उनपर तबाही डाल दी और उन्हें बराबर कर दिया</td></tr>
-<tr><td class='ayah-num'>15</td><td class='translit'>Wal<u>a</u> yakh<u>a</u>fu AAuqb<u>a</u>h<u>a</u></td><td class='trans'>He dreadeth not the sequel (of events).</td><td class='hindi'>और उसे उसके परिणाम का कोई भय नहीं</td></tr>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; Translation (Pickthall) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan)</th></tr></thead><tbody>
+<tr class='ayah-sep'><td colspan='2'>Ayah 1</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>al</b>shshamsi wa<u>d</u>u<u>ha</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>By the sun and his brightness,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>साक्षी है सूर्य और उसकी प्रभा,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 2</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>lqamari i<u>tha</u> tal<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the moon when she followeth him,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और चन्द्रमा जबकि वह उनके पीछे आए,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 3</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>al</b>nnah<u>a</u>ri i<u>tha</u> jall<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the day when it revealeth him,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और दिन, जबकि वह उसे प्रकट कर दे,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 4</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>llayli i<u>tha</u> yaghsh<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the night when it enshroudeth him,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और रात, जबकि वह उसको ढाँक ले</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 5</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>al</b>ssam<u>a</u>i wam<u>a</u> ban<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the heaven and Him Who built it,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और आकाश और जैसा कुछ उसे उठाया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 6</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wa<b>a</b>lar<u>d</u>i wam<u>a</u> <u>t</u>a<u>ha</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the earth and Him Who spread it,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और धरती और जैसा कुछ उसे बिछाया</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 7</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wanafsin wam<u>a</u> saww<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And a soul and Him Who perfected it</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और आत्मा और जैसा कुछ उसे सँवारा</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 8</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Faalhamah<u>a</u> fujoorah<u>a</u> wataqw<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And inspired it (with conscience of) what is wrong for it and (what is) right for it.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>फिर उसके दिल में डाली उसकी बुराई और उसकी परहेज़गारी</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 9</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Qad afla<u>h</u>a man zakk<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>He is indeed successful who causeth it to grow,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>सफल हो गया जिसने उसे विकसित किया</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 10</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Waqad kh<u>a</u>ba man dass<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And he is indeed a failure who stunteth it.</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और असफल हुआ जिसने उसे दबा दिया</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 11</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Ka<u>thth</u>abat thamoodu bi<u>t</u>aghw<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>(The tribe of) Thamud denied (the truth) in their rebellious pride,</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>समूद ने अपनी सरकशी से झुठलाया,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 12</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>I<u>th</u>i inbaAAatha ashq<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>When the basest of them broke forth</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>जब उनमें का सबसे बड़ा दुर्भाग्यशाली उठ खड़ा हुआ,</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 13</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Faq<u>a</u>la lahum rasoolu All<u>a</u>hi n<u>a</u>qata All<u>a</u>hi wasuqy<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>And the messenger of Allah said: It is the she-camel of Allah, so let her drink!</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>तो अल्लाह के रसूल ने उनसे कहा, "सावधान, अल्लाह की ऊँटनी और उसके पिलाने (की बारी) से।"</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 14</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Faka<u>thth</u>aboohu faAAaqarooh<u>a</u> fadamdama AAalayhim rabbuhum bi<u>th</u>anbihim fasaww<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>But they denied him, and they hamstrung her, so Allah doomed them for their sin and rased (their dwellings).</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>किन्तु उन्होंने उसे झुठलाया और उस ऊँटनी की कूचें काट डाली। अन्ततः उनके रब ने उनके गुनाह के कारण उनपर तबाही डाल दी और उन्हें बराबर कर दिया</td></tr>
+<tr class='ayah-sep'><td colspan='2'>Ayah 15</td></tr>
+<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>Wal<u>a</u> yakh<u>a</u>fu AAuqb<u>a</u>h<u>a</u></td></tr>
+<tr class='trans'><td class='label'>English</td><td>He dreadeth not the sequel (of events).</td></tr>
+<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</td><td class='hindi-text'>और उसे उसके परिणाम का कोई भय नहीं</td></tr>
 </tbody></table></div>
 <nav class='chapter-nav'><span><a href='090.html'>&laquo; Surah 90</a></span><span><a href='092.html'>Surah 92 &raquo;</a></span></nav>
 </main>
