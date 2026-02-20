@@ -42,4 +42,45 @@ for x in range(114):
 targetp.close()
 
 
+with open('qus.tex','w') as targetu, open('en.sahih.txt','r', encoding='utf-8') as transu:
+    for x in range(114):
+        targetu.write("\\chapter{%s}\n" % (suraname[x]) )
+        targetu.write("\\begin{Arabic}\n\\Huge{\\centerline{\\basmalah}}\\end{Arabic}\n")
+        count=0
+        while(count<surasize[x]):
+            targetu.write("\\flushright{\\begin{Arabic}\n")
+            targetu.write("\\quranayah[%d][%d]\n" %(x+1,count+1))
+            targetu.write("\\end{Arabic}}\n")
+            count=count+1
+            ab=transu.readline()
+            targetu.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
+
+
+with open('qut.tex','w') as targett, open('en.transliteration.txt','r', encoding='utf-8') as transt:
+    for x in range(114):
+        targett.write("\\chapter{%s}\n" % (suraname[x]) )
+        targett.write("\\begin{Arabic}\n\\Huge{\\centerline{\\basmalah}}\\end{Arabic}\n")
+        count=0
+        while(count<surasize[x]):
+            targett.write("\\flushright{\\begin{Arabic}\n")
+            targett.write("\\quranayah[%d][%d]\n" %(x+1,count+1))
+            targett.write("\\end{Arabic}}\n")
+            count=count+1
+            ab=transt.readline()
+            targett.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
+
+
+with open('qupk.tex','w') as targetpk, open('en.pickthall.txt','r', encoding='utf-8') as transpk:
+    for x in range(114):
+        targetpk.write("\\chapter{%s}\n" % (suraname[x]) )
+        targetpk.write("\\begin{Arabic}\n\\Huge{\\centerline{\\basmalah}}\\end{Arabic}\n")
+        count=0
+        while(count<surasize[x]):
+            targetpk.write("\\flushright{\\begin{Arabic}\n")
+            targetpk.write("\\quranayah[%d][%d]\n" %(x+1,count+1))
+            targetpk.write("\\end{Arabic}}\n")
+            count=count+1
+            ab=transpk.readline()
+            targetpk.write("\\flushleft{%s}\n" % ab.rstrip('\n'))
+
 
