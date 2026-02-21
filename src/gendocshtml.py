@@ -10,6 +10,8 @@ Sources used:
   - output/quran_translit_unicode.txt : [sura:ayah] Unicode transliteration (Quran Unicode Project)
   - output/quran_hindi_farooq.txt     : [sura:ayah] Hindi translation (Farooq Khan)
   - output/quran_hindi_suhail.txt     : [sura:ayah] Hindi translation (Suhail)
+  - output/quran_hindi_mokhtasar.txt  : [sura:ayah] Hindi Tafsir (Al-Mokhtasar)
+  - output/quran_english_abridged.txt : [sura:ayah] English Explanation (Abridged)
   - data/en.pickthall.txt             : one English line per ayah (Pickthall)
   - output/quran_english_yusufali.txt : [sura:ayah] English translation (Yusuf Ali)
   - output/quran_english_sahih.txt    : [sura:ayah] English translation (Saheeh International)
@@ -169,6 +171,30 @@ with open('output/quran_hindi_suhail.txt', 'r', encoding='utf-8') as f:
             hindi_suhail[(int(m.group(1)), int(m.group(2)))] = m.group(3)
 
 # ---------------------------------------------------------------------------
+# Load Hindi Tafsir (Mokhtasar)  quran_hindi_mokhtasar.txt
+# Format: [sura:ayah] text
+# ---------------------------------------------------------------------------
+hindi_mokhtasar = {}
+with open('output/quran_hindi_mokhtasar.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
+        if m:
+            hindi_mokhtasar[(int(m.group(1)), int(m.group(2)))] = m.group(3)
+
+# ---------------------------------------------------------------------------
+# Load English Abridged Explanation  quran_english_abridged.txt
+# Format: [sura:ayah] text
+# ---------------------------------------------------------------------------
+eng_abridged = {}
+with open('output/quran_english_abridged.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
+        if m:
+            eng_abridged[(int(m.group(1)), int(m.group(2)))] = m.group(3)
+
+# ---------------------------------------------------------------------------
 # Load Unicode transliteration  quran_translit_unicode.txt
 # Format: [sura:ayah] text
 # ---------------------------------------------------------------------------
@@ -211,10 +237,13 @@ td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
 .trans-sahih td{background:#e3f2fd}
 .hindi td{background:#f5f0ff}
 .hindi-suhail td{background:#fff3e0}
+.hindi-mokhtasar td{background:#e8f5e0}
+.eng-abridged td{background:#e8f4fd}
 .translit-text{font-style:normal;font-weight:600}
 .translit-unicode-text{font-style:normal;font-weight:600;color:#283593}
 .hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 .hindi-suhail-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#5d4037}
+.hindi-mokhtasar-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#1b5e20}
 .arabic td{background:#fff8e1}
 .arabic-text{font-family:'Scheherazade New','Amiri','Traditional Arabic',serif;font-size:1.5em;direction:rtl;text-align:right;line-height:2}
 nav.chapter-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
@@ -239,14 +268,14 @@ HEADER_HTML = """\
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah {num}: {name}</h1>
-<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net &amp; Unicode Project) &nbsp;/&nbsp; English (Pickthall, Yusuf Ali &amp; Saheeh Int&#x2019;l) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail)</th></tr></thead><tbody>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net &amp; Unicode Project) &nbsp;/&nbsp; English (Pickthall, Yusuf Ali &amp; Saheeh Int&#x2019;l) &nbsp;/&nbsp; English Explanation (Abridged) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2340;&#2347;&#2381;&#2360;&#2368;&#2352; (Al-Mokhtasar)</th></tr></thead><tbody>
 """
 
 FOOTER_HTML = """\
 </tbody></table></div>
 {nav}
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; English Explanation: Abridged Explanation of the Quran &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi &nbsp;|&nbsp; Hindi Tafsir: Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim</footer>
 </body>
 </html>"""
 
@@ -279,6 +308,8 @@ for sura_idx in range(1, 115):
             sa = sahih.get((sura_idx, ayah), '')
             hi = hindi.get((sura_idx, ayah), '')
             hs = hindi_suhail.get((sura_idx, ayah), '')
+            hm = hindi_mokhtasar.get((sura_idx, ayah), '')
+            ea = eng_abridged.get((sura_idx, ayah), '')
             ar = arabic.get((sura_idx, ayah), '')
             out.write(
                 "<tr class='ayah-sep'><td colspan='2'>Ayah %d</td></tr>\n"
@@ -288,9 +319,11 @@ for sura_idx in range(1, 115):
                 "<tr class='trans'><td class='label'>English (Pickthall)</td><td>%s</td></tr>\n"
                 "<tr class='trans-yusuf'><td class='label'>English (Yusuf Ali)</td><td>%s</td></tr>\n"
                 "<tr class='trans-sahih'><td class='label'>English (Saheeh Int&#x2019;l)</td><td>%s</td></tr>\n"
+                "<tr class='eng-abridged'><td class='label'>English (Abridged Expl.)</td><td>%s</td></tr>\n"
                 "<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Farooq)</td><td class='hindi-text'>%s</td></tr>\n"
                 "<tr class='hindi-suhail'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Suhail)</td><td class='hindi-suhail-text'>%s</td></tr>\n"
-                % (ayah, ar, tl, tu, pk, ya, sa, hi, hs)
+                "<tr class='hindi-mokhtasar'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2340;&#2347;&#2381;&#2360;&#2368;&#2352; (Mokhtasar)</td><td class='hindi-mokhtasar-text'>%s</td></tr>\n"
+                % (ayah, ar, tl, tu, pk, ya, sa, ea, hi, hs, hm)
             )
         out.write(FOOTER_HTML.format(nav=nav))
 
@@ -324,8 +357,10 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <em>English Translation:</em> Mohammed Marmaduke Pickthall, <em>The Meaning of the Glorious Koran</em> (1930) &mdash; Public Domain.<br>
 <em>English Translation:</em> Abdullah Yusuf Ali, <em>The Holy Quran: Text, Translation and Commentary</em> &mdash; Public Domain.<br>
 <em>English Translation:</em> Saheeh International.<br>
+<em>English Explanation:</em> Abridged Explanation of the Quran.<br>
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Muhammad Farooq Khan &amp; Muhammad Ahmed.<br>
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Suhel Farooq Khan &amp; Saifur Rahman Nadwi.<br>
+<em>Hindi Tafsir (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2340;&#2347;&#2381;&#2360;&#2368;&#2352;):</em> Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim.<br>
 Texts are reproduced verbatim; no alterations have been made.
 </div>
 <h2>Surahs (Chapters)</h2>
@@ -336,7 +371,7 @@ Texts are reproduced verbatim; no alterations have been made.
     out.write("""\
 </div>
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; English Explanation: Abridged Explanation of the Quran &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi &nbsp;|&nbsp; Hindi Tafsir: Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim</footer>
 </body>
 </html>""")
 
