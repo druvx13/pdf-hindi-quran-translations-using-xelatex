@@ -22,12 +22,13 @@ translations = [
     ('data/en.pickthall.txt', 'output/quran_english_pickthall.txt', 'Mohammed Marmaduke Pickthall', 'English'),
     ('data/en.yusufali.txt', 'output/quran_english_yusufali.txt', 'Abdullah Yusuf Ali', 'English-Piped'),
     ('data/ar.quran.txt', 'output/quran_arabic.txt', 'Standard Arabic Uthmani Script', 'Arabic'),
+    ('data/translit_en.txt', 'output/quran_translit_unicode.txt', 'Quran Unicode Project', 'Transliteration-Sequential'),
 ]
 
 for src_file, out_file, translator, lang in translations:
     with open(src_file, 'r', encoding='utf-8') as src, \
          open(out_file, 'w', encoding='utf-8') as out:
-        if lang == 'Transliteration':
+        if lang in ('Transliteration', 'Transliteration-Sequential'):
             out.write("Quran - English Transliteration\n")
             out.write("Source: %s\n" % translator)
         elif lang in ('English', 'English-Piped'):
@@ -56,6 +57,16 @@ for src_file, out_file, translator, lang in translations:
                 for ayah_num in range(1, surasize[sura_num] + 1):
                     line = ayah_text.get((sura_num + 1, ayah_num), '')
                     out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
+                out.write("\n")
+        elif lang == 'Transliteration-Sequential':
+            # Parse num|text format with sequential global ayah numbers
+            for sura_num in range(114):
+                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                out.write("-" * 40 + "\n")
+                for ayah_num in range(1, surasize[sura_num] + 1):
+                    raw_line = src.readline().rstrip('\n')
+                    text = raw_line.split('|', 1)[1] if '|' in raw_line else ''
+                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, text))
                 out.write("\n")
         else:
             for sura_num in range(114):
