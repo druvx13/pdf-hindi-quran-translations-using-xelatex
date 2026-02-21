@@ -26,6 +26,7 @@ translations = [
     ('data/ar.quran.txt', 'output/quran_arabic.txt', 'Standard Arabic Uthmani Script', 'Arabic'),
     ('data/translit_en.txt', 'output/quran_translit_unicode.txt', 'Quran Unicode Project', 'Transliteration-Sequential'),
     ('data/hindi-mokhtasar.json.zip', 'output/quran_hindi_mokhtasar.txt', 'Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim', 'Hindi-Tafsir-JSON'),
+    ('data/abridged-explanation-of-the-quran.json.zip', 'output/quran_english_abridged.txt', 'Abridged Explanation of the Quran', 'English-Tafsir-JSON'),
 ]
 
 for src_file, out_file, translator, lang in translations:
@@ -45,8 +46,11 @@ for src_file, out_file, translator, lang in translations:
         elif lang == 'Hindi-Tafsir-JSON':
             out.write("Quran - Hindi Tafsir\n")
             out.write("Tafseer: %s\n" % translator)
+        elif lang == 'English-Tafsir-JSON':
+            out.write("Quran - English Explanation\n")
+            out.write("Source: %s\n" % translator)
         out.write("=" * 60 + "\n\n")
-        if lang == 'Hindi-Tafsir-JSON':
+        if lang in ('Hindi-Tafsir-JSON', 'English-Tafsir-JSON'):
             with zipfile.ZipFile(src_file, 'r') as zf:
                 json_name = next(n for n in zf.namelist() if n.endswith('.json'))
                 with zf.open(json_name) as jf:
