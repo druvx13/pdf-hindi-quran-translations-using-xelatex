@@ -7,7 +7,9 @@ Run from the repository root:
 
 Reads source data from data/ and writes output files to output/.
 """
+import json
 import os
+import zipfile
 
 os.makedirs('output', exist_ok=True)
 
@@ -23,11 +25,11 @@ translations = [
     ('data/en.yusufali.txt', 'output/quran_english_yusufali.txt', 'Abdullah Yusuf Ali', 'English-Piped'),
     ('data/ar.quran.txt', 'output/quran_arabic.txt', 'Standard Arabic Uthmani Script', 'Arabic'),
     ('data/translit_en.txt', 'output/quran_translit_unicode.txt', 'Quran Unicode Project', 'Transliteration-Sequential'),
+    ('data/hindi-mokhtasar.json.zip', 'output/quran_hindi_mokhtasar.txt', 'Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim', 'Hindi-Tafsir-JSON'),
 ]
 
 for src_file, out_file, translator, lang in translations:
-    with open(src_file, 'r', encoding='utf-8') as src, \
-         open(out_file, 'w', encoding='utf-8') as out:
+    with open(out_file, 'w', encoding='utf-8') as out:
         if lang in ('Transliteration', 'Transliteration-Sequential'):
             out.write("Quran - English Transliteration\n")
             out.write("Source: %s\n" % translator)
@@ -40,17 +42,37 @@ for src_file, out_file, translator, lang in translations:
         elif lang == 'Hindi':
             out.write("Quran - Hindi Anuvad\n")
             out.write("Anuvadak: %s\n" % translator)
+        elif lang == 'Hindi-Tafsir-JSON':
+            out.write("Quran - Hindi Tafsir\n")
+            out.write("Tafseer: %s\n" % translator)
         out.write("=" * 60 + "\n\n")
-        if lang == 'English-Piped':
-            # Parse sura|ayah|text format (comment lines start with #)
-            ayah_text = {}
-            for raw_line in src:
-                raw_line = raw_line.rstrip('\n')
-                if not raw_line or raw_line.startswith('#'):
-                    continue
-                parts = raw_line.split('|', 2)
-                if len(parts) == 3:
-                    ayah_text[(int(parts[0]), int(parts[1]))] = parts[2]
+        if lang == 'Hindi-Tafsir-JSON':
+            with zipfile.ZipFile(src_file, 'r') as zf:
+                json_name = next(n for n in zf.namelist() if n.endswith('.json'))
+                with zf.open(json_name) as jf:
+                    ayah_data = json.load(jf)
+            for sura_num in range(114):
+                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                out.write("-" * 40 + "\n")
+                for ayah_num in range(1, surasize[sura_num] + 1):
+                    key = "%d:%d" % (sura_num + 1, ayah_num)
+                    entry = ayah_data.get(key, {})
+                    if isinstance(entry, str):
+                        entry = ayah_data.get(entry, {})
+                    text = entry.get('text', '') if isinstance(entry, dict) else ''
+                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, text))
+                out.write("\n")
+        elif lang == 'English-Piped':
+            with open(src_file, 'r', encoding='utf-8') as src:
+                # Parse sura|ayah|text format (comment lines start with #)
+                ayah_text = {}
+                for raw_line in src:
+                    raw_line = raw_line.rstrip('\n')
+                    if not raw_line or raw_line.startswith('#'):
+                        continue
+                    parts = raw_line.split('|', 2)
+                    if len(parts) == 3:
+                        ayah_text[(int(parts[0]), int(parts[1]))] = parts[2]
             for sura_num in range(114):
                 out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
                 out.write("-" * 40 + "\n")
@@ -59,21 +81,23 @@ for src_file, out_file, translator, lang in translations:
                     out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
                 out.write("\n")
         elif lang == 'Transliteration-Sequential':
-            # Parse num|text format with sequential global ayah numbers
-            for sura_num in range(114):
-                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
-                out.write("-" * 40 + "\n")
-                for ayah_num in range(1, surasize[sura_num] + 1):
-                    raw_line = src.readline().rstrip('\n')
-                    text = raw_line.split('|', 1)[1] if '|' in raw_line else ''
-                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, text))
-                out.write("\n")
+            with open(src_file, 'r', encoding='utf-8') as src:
+                # Parse num|text format with sequential global ayah numbers
+                for sura_num in range(114):
+                    out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                    out.write("-" * 40 + "\n")
+                    for ayah_num in range(1, surasize[sura_num] + 1):
+                        raw_line = src.readline().rstrip('\n')
+                        text = raw_line.split('|', 1)[1] if '|' in raw_line else ''
+                        out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, text))
+                    out.write("\n")
         else:
-            for sura_num in range(114):
-                out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
-                out.write("-" * 40 + "\n")
-                for ayah_num in range(1, surasize[sura_num] + 1):
-                    line = src.readline().rstrip('\n')
-                    out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
-                out.write("\n")
+            with open(src_file, 'r', encoding='utf-8') as src:
+                for sura_num in range(114):
+                    out.write("Surah %d: %s\n" % (sura_num + 1, suraname[sura_num]))
+                    out.write("-" * 40 + "\n")
+                    for ayah_num in range(1, surasize[sura_num] + 1):
+                        line = src.readline().rstrip('\n')
+                        out.write("[%d:%d] %s\n" % (sura_num + 1, ayah_num, line))
+                    out.write("\n")
     print("Generated: %s" % out_file)
