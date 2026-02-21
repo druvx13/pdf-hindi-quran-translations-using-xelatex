@@ -224,6 +224,7 @@ h2{font-size:1.2em;color:#1a3a5c;margin:20px 0 8px}
   border-radius:6px;text-decoration:none;color:#1a3a5c;font-size:.95em}
 .surah-grid a:hover{background:#dde8f2}
 .notice{background:#fff8e1;border-left:4px solid #ffd54f;padding:12px 16px;margin-bottom:20px;font-size:.95em}
+.notice summary{cursor:pointer}
 .table-wrap{overflow-x:auto;width:100%}
 table{width:100%;border-collapse:collapse;margin-bottom:24px}
 th{background:#1a3a5c;color:#fff;padding:10px 12px;text-align:left;font-size:.9em}
@@ -349,8 +350,8 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Qur&#x2019;an &mdash; Arabic, Transliteration, English &amp; Hindi Translation</h1>
-<div class="notice">
-<strong>Public Domain Notice &amp; Source Attribution</strong><br>
+<details class="notice">
+<summary><strong>Public Domain Notice &amp; Source Attribution</strong></summary>
 <em>Arabic Text:</em> Standard Arabic Uthmani Script.<br>
 <em>Transliteration:</em> Tanzil.net English Transliteration of the Qur&#x2019;an.<br>
 <em>Transliteration:</em> Quran Unicode Project (translit_en.txt).<br>
@@ -362,7 +363,7 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <em>Hindi Translation (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342;):</em> Suhel Farooq Khan &amp; Saifur Rahman Nadwi.<br>
 <em>Hindi Tafsir (&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2340;&#2347;&#2381;&#2360;&#2368;&#2352;):</em> Al-Mokhtasar Fi Tafsir Al-Quran Al-Karim.<br>
 Texts are reproduced verbatim; no alterations have been made.
-</div>
+</details>
 <h2>Surahs (Chapters)</h2>
 <div class="surah-grid">
 """ % CSS)
