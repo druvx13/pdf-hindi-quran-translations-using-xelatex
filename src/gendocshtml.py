@@ -6,10 +6,11 @@ Run from the repository root:
     python3 src/gendocshtml.py
 
 Sources used:
-  - trans/en.transliteration.txt    : sura|ayah|transliteration (with HTML tags)
-  - output/quran_hindi_farooq.txt   : [sura:ayah] Hindi translation (Farooq Khan)
-  - output/quran_hindi_suhail.txt   : [sura:ayah] Hindi translation (Suhail)
-  - data/en.pickthall.txt           : one English line per ayah (Pickthall)
+  - trans/en.transliteration.txt      : sura|ayah|transliteration (with HTML tags)
+  - output/quran_translit_unicode.txt : [sura:ayah] Unicode transliteration (Quran Unicode Project)
+  - output/quran_hindi_farooq.txt     : [sura:ayah] Hindi translation (Farooq Khan)
+  - output/quran_hindi_suhail.txt     : [sura:ayah] Hindi translation (Suhail)
+  - data/en.pickthall.txt             : one English line per ayah (Pickthall)
   - output/quran_english_yusufali.txt : [sura:ayah] English translation (Yusuf Ali)
   - output/quran_english_sahih.txt    : [sura:ayah] English translation (Saheeh International)
   - output/quran_arabic.txt           : [sura:ayah] Arabic text (Uthmani script)
@@ -168,6 +169,18 @@ with open('output/quran_hindi_suhail.txt', 'r', encoding='utf-8') as f:
             hindi_suhail[(int(m.group(1)), int(m.group(2)))] = m.group(3)
 
 # ---------------------------------------------------------------------------
+# Load Unicode transliteration  quran_translit_unicode.txt
+# Format: [sura:ayah] text
+# ---------------------------------------------------------------------------
+translit_unicode = {}
+with open('output/quran_translit_unicode.txt', 'r', encoding='utf-8') as f:
+    for line in f:
+        line = line.rstrip('\n')
+        m = re.match(r'^\[(\d+):(\d+)\]\s*(.*)', line)
+        if m:
+            translit_unicode[(int(m.group(1)), int(m.group(2)))] = m.group(3)
+
+# ---------------------------------------------------------------------------
 # HTML template helpers
 # ---------------------------------------------------------------------------
 CSS = """\
@@ -192,12 +205,14 @@ td{padding:8px 12px;vertical-align:top;border:1px solid #ccd6e0}
 .ayah-sep td{background:#1a3a5c;color:#fff;font-weight:bold;font-size:.9em;padding:6px 12px;border-color:#1a3a5c}
 .label{color:#888;font-size:.82em;white-space:nowrap;width:110px}
 .translit td{background:#f0f4f8}
+.translit-unicode td{background:#e8eaf6}
 .trans td{background:#fff}
 .trans-yusuf td{background:#e8f5e9}
 .trans-sahih td{background:#e3f2fd}
 .hindi td{background:#f5f0ff}
 .hindi-suhail td{background:#fff3e0}
 .translit-text{font-style:normal;font-weight:600}
+.translit-unicode-text{font-style:normal;font-weight:600;color:#283593}
 .hindi-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#3a2a6c}
 .hindi-suhail-text{font-family:'Noto Sans Devanagari',Arial,sans-serif;color:#5d4037}
 .arabic td{background:#fff8e1}
@@ -224,14 +239,14 @@ HEADER_HTML = """\
 <header><a href="index.html">&#8962; Index</a></header>
 <main>
 <h1>Surah {num}: {name}</h1>
-<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net) &nbsp;/&nbsp; English (Pickthall, Yusuf Ali &amp; Saheeh Int&#x2019;l) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail)</th></tr></thead><tbody>
+<div class='table-wrap'><table><thead><tr><th colspan='2'>Ayah &nbsp;&mdash;&nbsp; Arabic (Uthmani) &nbsp;/&nbsp; Transliteration (Tanzil.net &amp; Unicode Project) &nbsp;/&nbsp; English (Pickthall, Yusuf Ali &amp; Saheeh Int&#x2019;l) &nbsp;/&nbsp; &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &#2309;&#2344;&#2369;&#2357;&#2366;&#2342; (Farooq Khan &amp; Suhail)</th></tr></thead><tbody>
 """
 
 FOOTER_HTML = """\
 </tbody></table></div>
 {nav}
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
 </body>
 </html>"""
 
@@ -258,6 +273,7 @@ for sura_idx in range(1, 115):
         out.write(HEADER_HTML.format(num=sura_idx, name=name, css=CSS))
         for ayah in range(1, size + 1):
             tl = translit.get((sura_idx, ayah), '')
+            tu = translit_unicode.get((sura_idx, ayah), '')
             pk = pickthall.get((sura_idx, ayah), '')
             ya = yusufali.get((sura_idx, ayah), '')
             sa = sahih.get((sura_idx, ayah), '')
@@ -267,13 +283,14 @@ for sura_idx in range(1, 115):
             out.write(
                 "<tr class='ayah-sep'><td colspan='2'>Ayah %d</td></tr>\n"
                 "<tr class='arabic'><td class='label'>&#1593;&#1614;&#1585;&#1614;&#1576;&#1616;&#1610;</td><td class='arabic-text'>%s</td></tr>\n"
-                "<tr class='translit'><td class='label'>Transliteration</td><td class='translit-text'>%s</td></tr>\n"
+                "<tr class='translit'><td class='label'>Transliteration (Tanzil)</td><td class='translit-text'>%s</td></tr>\n"
+                "<tr class='translit-unicode'><td class='label'>Transliteration (Unicode)</td><td class='translit-unicode-text'>%s</td></tr>\n"
                 "<tr class='trans'><td class='label'>English (Pickthall)</td><td>%s</td></tr>\n"
                 "<tr class='trans-yusuf'><td class='label'>English (Yusuf Ali)</td><td>%s</td></tr>\n"
                 "<tr class='trans-sahih'><td class='label'>English (Saheeh Int&#x2019;l)</td><td>%s</td></tr>\n"
                 "<tr class='hindi'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Farooq)</td><td class='hindi-text'>%s</td></tr>\n"
                 "<tr class='hindi-suhail'><td class='label'>&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Suhail)</td><td class='hindi-suhail-text'>%s</td></tr>\n"
-                % (ayah, ar, tl, pk, ya, sa, hi, hs)
+                % (ayah, ar, tl, tu, pk, ya, sa, hi, hs)
             )
         out.write(FOOTER_HTML.format(nav=nav))
 
@@ -303,6 +320,7 @@ with open(index_path, 'w', encoding='utf-8') as out:
 <strong>Public Domain Notice &amp; Source Attribution</strong><br>
 <em>Arabic Text:</em> Standard Arabic Uthmani Script.<br>
 <em>Transliteration:</em> Tanzil.net English Transliteration of the Qur&#x2019;an.<br>
+<em>Transliteration:</em> Quran Unicode Project (translit_en.txt).<br>
 <em>English Translation:</em> Mohammed Marmaduke Pickthall, <em>The Meaning of the Glorious Koran</em> (1930) &mdash; Public Domain.<br>
 <em>English Translation:</em> Abdullah Yusuf Ali, <em>The Holy Quran: Text, Translation and Commentary</em> &mdash; Public Domain.<br>
 <em>English Translation:</em> Saheeh International.<br>
@@ -318,7 +336,7 @@ Texts are reproduced verbatim; no alterations have been made.
     out.write("""\
 </div>
 </main>
-<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
+<footer>Arabic Text: Standard Arabic Uthmani Script &nbsp;|&nbsp; Tanzil.net Transliteration &amp; Pickthall Translation &mdash; Public Domain &nbsp;|&nbsp; Quran Unicode Project Transliteration &nbsp;|&nbsp; Yusuf Ali Translation &mdash; Public Domain &nbsp;|&nbsp; Saheeh International Translation &nbsp;|&nbsp; Hindi: Farooq Khan &amp; Muhammad Ahmed &nbsp;|&nbsp; Hindi: Suhel Farooq Khan &amp; Saifur Rahman Nadwi</footer>
 </body>
 </html>""")
 
